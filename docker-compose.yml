@@ -5,9 +5,9 @@ services:
     volumes:
       - qtumcore:/home/node/app/qtumNode/data
     ports:
-      - "3003:3001"
-      - "28332:28332"
-      - "3701:8332"
+      - "3013:3001"
+      - "28312:28332"
+      - "3711:13888"
 
 volumes:
   qtumcore:

@@ -24,6 +24,6 @@ RUN qtumcore-node install https://github.com/qtumproject/qtum-explorer.git#maste
 COPY qtumNode/data/qtum.conf ./data/qtum.conf
 COPY qtumNode/qtumcore-node.json ./qtumcore-node.json
 
-EXPOSE 8332 3001 28332
+EXPOSE 8332 3001 28332 13888 13889
 
 ENTRYPOINT qtumcore-node start
