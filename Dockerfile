@@ -1,4 +1,4 @@
-FROM mongo:3.4.19-jessie
+FROM ubuntu:18.04
 USER root
 RUN apt-get update && apt-get install -y \
     build-essential \
