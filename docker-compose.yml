@@ -3,11 +3,13 @@ services:
   qtumcore:
     build: .
     volumes:
-      - qtumcore:/home/node/app/qtumNode/data
+      - qtumcoreblocks:/home/node/app/qtumNode/data/blocks
+      - qtumcoretestnet:/home/node/app/qtumNode/data/testnet3
     ports:
       - "3013:3001"
       - "28312:28332"
       - "3711:13888"
 
 volumes:
-  qtumcore:
+  qtumcoreblocks:
+  qtumcoretestnet:

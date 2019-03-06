@@ -26,7 +26,7 @@
       "db": {
         "host": "127.0.0.1",
         "port": "27017",
-        "database": "qtum-api-livenet",
+        "database": "qtum-api-testnet",
         "user": "",
         "password": ""
       },
