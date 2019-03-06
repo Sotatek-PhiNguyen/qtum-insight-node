@@ -31,7 +31,6 @@ COPY qtumNode/data/qtum.conf ./data/qtum.conf
 COPY qtumNode/qtumcore-node.json ./qtumcore-node.json
 
 
-EXPOSE 8332 3001 28332 13888 13889
+EXPOSE 8332 3001 28332 13888 13889 27017
 
-CMD service mongod start
-ENTRYPOINT qtumcore-node start
+ENTRYPOINT /usr/bin/mongod --fork --logpath /var/log/mongodb.log && qtumcore-node start
