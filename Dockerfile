@@ -5,17 +5,10 @@ RUN apt-get update && apt-get install -y \
     git \
     libzmq3-dev
 
-RUN set -ex \
-    && apt-get update \
-    && apt-get install -y -qq --no-install-recommends ca-certificates curl wget apt-utils jq
-# install qtum binaries
-RUN set -ex \
-    && echo `curl -s https://api.github.com/repos/qtumproject/qtum/releases/latest | jq -r ".assets[] | select(.name | test(\"x86_64-linux-gnu.tar.gz\")) | .browser_download_url"` > /tmp/qtum_url \
-    && QTUM_URL=`cat /tmp/qtum_url` \
-    && QTUM_DIST=$(basename $QTUM_URL) \
-    && wget -O $QTUM_DIST $QTUM_URL \
-	&& tar -xzvf $QTUM_DIST -C /usr/local --strip-components=1 \
-	&& rm /tmp/qtum*
+ADD https://github.com/qtumproject/qtum/releases/download/mainnet-ignition-v0.17.2/qtum-0.17.2-x86_64-linux-gnu.tar.gz /tmp/
+RUN tar -xvf /tmp/qtum-*.tar.gz -C /tmp/
+RUN cp /tmp/qtum*/bin/*  /usr/local/bin
+RUN rm -rf /tmp/qtum*
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     && apt install -y nodejs \
