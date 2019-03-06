@@ -1,4 +1,4 @@
-FROM tbaltrushaitis/ubuntu-nodejs:v6.9.1
+FROM ubuntu
 USER root
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -16,6 +16,10 @@ RUN set -ex \
     && wget -O $QTUM_DIST $QTUM_URL \
 	&& tar -xzvf $QTUM_DIST -C /usr/local --strip-components=1 \
 	&& rm /tmp/qtum*
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV APP_HOME /home/node/app
 RUN mkdir -p $APP_HOME
