@@ -21,11 +21,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     && apt install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
-
-RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list
-RUN apt-get update
-RUN apt-get install -y mongodb-org
 ENV APP_HOME /home/node/app
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
